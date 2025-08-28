@@ -738,19 +738,10 @@
             </div>
         </div>
     </footer>
-<script>
-/**
- * Lead-level, drop-in replacement.
- * - Unifies mouse + touch via Pointer Events for silky 60fps on phones/tablets.
- * - rAF-batched style updates (transform/opacity/filter) + will-change hints.
- * - Desktop behavior preserved (drag up = translateY + blur + fade).
- * - Mobile/tablet feels like iPad lockscreen: short drag, easing, flick-to-unlock.
- * - Clean unlock/back animations; reinitializes scroll-triggered animations.
- */
-
-/* ==========================
-   Scroll Animations (unchanged)
-========================== */
+  <script>
+// ==========================
+// Scroll-triggered Animations + Counter
+// ==========================
 class ScrollAnimations {
   constructor() {
     this.animatedElements = document.querySelectorAll(
@@ -758,133 +749,130 @@ class ScrollAnimations {
     );
     this.init();
   }
+
   init() {
     if ('IntersectionObserver' in window) {
       this.setupIntersectionObserver();
     }
   }
+
   setupIntersectionObserver() {
-    const options = { root: null, rootMargin: '-10%', threshold: 0.1 };
+    const options = {
+      root: null,
+      rootMargin: '-10%',
+      threshold: 0.1
+    };
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-in');
+
+          // ✅ If this element has a .stat-number, animate it
           const numberEl = entry.target.querySelector('.stat-number');
-          if (numberEl) this.animateCounter(numberEl);
+          if (numberEl) {
+            this.animateCounter(numberEl);
+          }
+
           observer.unobserve(entry.target);
         }
       });
     }, options);
 
-    this.animatedElements.forEach(el => {
-      el.classList.add('animate-ready');
-      observer.observe(el);
+    this.animatedElements.forEach(element => {
+      element.classList.add('animate-ready');
+      observer.observe(element);
     });
   }
+
+  // Count-up number animation
   animateCounter(el) {
     let targetText = el.textContent.trim();
     let target = this.parseNumber(targetText);
-    let duration = 2000, startTime = null;
+    let duration = 2000; // ms
+    let start = 0;
+    let startTime = null;
 
-    const step = (ts) => {
-      if (!startTime) startTime = ts;
-      let p = Math.min((ts - startTime) / duration, 1);
-      let value = Math.floor(p * target);
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      let progress = Math.min((timestamp - startTime) / duration, 1);
+      let value = Math.floor(progress * target);
+
       el.textContent = this.formatNumber(value, targetText);
-      if (p < 1) requestAnimationFrame(step);
-      else el.textContent = targetText;
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = targetText; // restore final formatted text
+      }
     };
+
     requestAnimationFrame(step);
   }
+
+  // Parse numbers like "2.1M", "90K", "13.4K"
   parseNumber(str) {
     str = str.toUpperCase();
-    if (str.includes('M')) return parseFloat(str) * 1_000_000;
-    if (str.includes('K')) return parseFloat(str) * 1_000;
-    return parseFloat(str.replace(/,/g, ''));
+    if (str.includes("M")) {
+      return parseFloat(str) * 1_000_000;
+    } else if (str.includes("K")) {
+      return parseFloat(str) * 1_000;
+    } else {
+      return parseFloat(str.replace(/,/g, ""));
+    }
   }
+
+  // Format numbers with suffix (K/M) if originally had them
   formatNumber(num, original) {
-    if (original.includes('M')) return (num / 1_000_000).toFixed(1) + 'M';
-    if (original.includes('K')) return (num / 1_000).toFixed(1) + 'K';
-    return num.toLocaleString();
+    if (original.includes("M")) {
+      return (num / 1_000_000).toFixed(1) + "M";
+    } else if (original.includes("K")) {
+      return (num / 1_000).toFixed(1) + "K";
+    } else {
+      return num.toLocaleString();
+    }
   }
 }
 
-/* ==========================
-   Lockscreen Unlock Handling
-========================== */
-const lockscreen = document.getElementById('lockscreen');
-const wallpaper  = document.getElementById('wallpaper');
+// ==========================
+// Lockscreen Unlock Handling
+// ==========================
+const lockscreen = document.getElementById("lockscreen");
+const wallpaper = document.getElementById("wallpaper");
 
 let isDragging = false;
 let startY = 0;
-let lastY = 0;
-let lastT = 0;
-let activePointerId = null;
 
-// rAF batching for super smooth updates
-let rafId = null;
-let pending = null;
+// Start dragging
+wallpaper.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  startY = e.clientY;
+  wallpaper.style.transition = "none";
+});
 
-// Tune these to taste (close to iPad feel)
-const UNLOCK_DRAG_PX = 200;         // distance-based unlock threshold
-const UNLOCK_FLICK_V = 1.1;         // px/ms upward flick threshold
-const MAX_BLUR = 20;                // px
-const DESKTOP_BLUR_DIVISOR = 25;    // matches your original
-const DESKTOP_OPACITY_RANGE = 400;  // matches your original
+document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  let dragDistance = startY - e.clientY;
 
-// Performance hints
-wallpaper.style.willChange = 'transform, opacity, filter';
-// Prevent native scrolling interfering during drag on touch
-wallpaper.style.touchAction = 'none';
+  if (dragDistance > 0) {
+    wallpaper.style.transform = `translateY(${-dragDistance}px)`;
+    let blurAmount = Math.min(dragDistance / 25, 20);
+    wallpaper.style.filter = `blur(${blurAmount}px)`;
+    let opacity = Math.max(1 - dragDistance / 400, 0.2);
+    wallpaper.style.opacity = opacity;
+  }
+});
 
-// Unified helpers
-function applyStyles(dragDistance) {
-  // Only react to upward drag
-  const d = Math.max(0, dragDistance);
-  // Translate up exactly like original desktop behavior
-  wallpaper.style.transform = `translateY(${-d}px)`;
+document.addEventListener("mouseup", (e) => {
+  if (!isDragging) return;
+  isDragging = false;
 
-  // Blur and fade match original desktop semantics
-  const blurAmount = Math.min(d / DESKTOP_BLUR_DIVISOR, MAX_BLUR);
-  wallpaper.style.filter = `blur(${blurAmount}px)`;
-  const opacity = Math.max(1 - d / DESKTOP_OPACITY_RANGE, 0.2);
-  wallpaper.style.opacity = String(opacity);
-}
+  let dragDistance = startY - e.clientY;
 
-function scheduleApply(dragDistance) {
-  pending = dragDistance;
-  if (rafId != null) return;
-  rafId = requestAnimationFrame(() => {
-    rafId = null;
-    if (pending != null) {
-      applyStyles(pending);
-      pending = null;
-    }
-  });
-}
-
-function animateBack() {
-  wallpaper.style.transition = 'transform 380ms cubic-bezier(.22,.61,.36,1), filter 380ms cubic-bezier(.22,.61,.36,1), opacity 380ms cubic-bezier(.22,.61,.36,1)';
-  wallpaper.style.transform = 'translateY(0)';
-  wallpaper.style.filter = 'blur(0px)';
-  wallpaper.style.opacity = '1';
-  // Clear transition after it runs to keep drag snappy next time
-  wallpaper.addEventListener('transitionend', clearTransitionOnce, { once: true });
-}
-function clearTransitionOnce() {
-  wallpaper.style.transition = 'none';
-}
-
-function animateUnlock() {
-  // Smooth finish like iPad: continue up, fade & blur out
-  wallpaper.style.transition = 'transform 420ms cubic-bezier(.22,.61,.36,1), filter 420ms cubic-bezier(.22,.61,.36,1), opacity 420ms cubic-bezier(.22,.61,.36,1)';
-  wallpaper.style.transform = 'translateY(-40vh)';
-  wallpaper.style.filter = `blur(${MAX_BLUR}px)`;
-  wallpaper.style.opacity = '0';
-
-  const finalize = () => {
-    lockscreen.classList.add('unlocked');
-    document.body.classList.remove('locked');
+  if (dragDistance > 200) {
+    // Unlock
+    lockscreen.classList.add("unlocked");
+    document.body.classList.remove("locked"); // ✅ allow scroll
 
     // Reset items so they can animate again
     document.querySelectorAll('.stat-item, .impact-story, .country-story, .voice-item')
@@ -894,93 +882,26 @@ function animateUnlock() {
       });
 
     // Re-run scroll-triggered animations after lockscreen transition
-    setTimeout(() => new ScrollAnimations(), 300);
-    wallpaper.removeEventListener('transitionend', finalize);
-    // Keep transition cleared for future interactions
-    setTimeout(() => { wallpaper.style.transition = 'none'; }, 0);
-  };
-  wallpaper.addEventListener('transitionend', finalize);
-}
+    setTimeout(() => {
+      new ScrollAnimations();
+    }, 500);
 
-// Pointer Events (mouse + touch + pen)
-function onPointerDown(e) {
-  // Only begin a new drag if we don't have one
-  if (isDragging) return;
-  isDragging = true;
-  activePointerId = e.pointerId;
-  startY = e.clientY;
-  lastY = startY;
-  lastT = performance.now();
-
-  // Stop text selection / scroll while dragging
-  e.preventDefault();
-  wallpaper.style.transition = 'none';
-  wallpaper.setPointerCapture(activePointerId);
-}
-
-function onPointerMove(e) {
-  if (!isDragging || e.pointerId !== activePointerId) return;
-  const y = e.clientY;
-  const now = performance.now();
-
-  const dragDistance = startY - y; // up is positive
-  scheduleApply(dragDistance);
-
-  lastY = y;
-  lastT = now;
-
-  // Prevent page scroll/jank while dragging
-  e.preventDefault();
-}
-
-function onPointerUp(e) {
-  if (!isDragging || e.pointerId !== activePointerId) return;
-  isDragging = false;
-
-  // Compute distance and flick velocity
-  const endY = e.clientY;
-  const endT = performance.now();
-  const dragDistance = Math.max(0, startY - endY);
-  const dt = Math.max(1, endT - lastT); // ms
-  const dy = Math.max(0, lastY - endY); // upward movement since last move
-  const velocity = dy / dt; // px/ms
-
-  // Unlock if distance big OR a decent upward flick
-  if (dragDistance > UNLOCK_DRAG_PX || velocity > UNLOCK_FLICK_V) {
-    animateUnlock();
   } else {
-    animateBack();
+    // Snap back if not enough drag
+    wallpaper.style.transition = "transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease";
+    wallpaper.style.transform = "translateY(0)";
+    wallpaper.style.filter = "blur(0px)";
+    wallpaper.style.opacity = "1";
   }
+});
 
-  // Release capture
-  try { wallpaper.releasePointerCapture(activePointerId); } catch(_) {}
-  activePointerId = null;
-}
-
-// Safety: cancel/leave should behave like pointerup
-function onPointerCancel(e) {
-  if (!isDragging || e.pointerId !== activePointerId) return;
-  isDragging = false;
-  animateBack();
-  try { wallpaper.releasePointerCapture(activePointerId); } catch(_) {}
-  activePointerId = null;
-}
-
-/* ==========================
-   Bind Events
-========================== */
-wallpaper.addEventListener('pointerdown', onPointerDown, { passive: false });
-window.addEventListener('pointermove', onPointerMove, { passive: false });
-window.addEventListener('pointerup', onPointerUp, { passive: false });
-window.addEventListener('pointercancel', onPointerCancel, { passive: false });
-window.addEventListener('pointerleave', onPointerCancel, { passive: false });
-
-/* ==========================
-   Run once on page load
-========================== */
+// ==========================
+// Run once on page load
+// ==========================
 new ScrollAnimations();
 </script>
 
+    
 
     
     <!-- Scripts -->
