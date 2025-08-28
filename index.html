@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIGA - Connecting The Dots: Giga's Impact In 2023</title>
+    <meta name="description" content="GIGA is a UNICEF-ITU initiative to connect every school to the Internet by 2030. Discover our impact, progress, and global footprint in transforming education through connectivity.">
+    <meta name="keywords" content="GIGA, UNICEF, ITU, school connectivity, digital education, Internet access, education technology, global impact">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://giga.global/">
+    <meta property="og:title" content="GIGA - Connecting The Dots: Giga's Impact In 2023">
+    <meta property="og:description" content="GIGA is a UNICEF-ITU initiative to connect every school to the Internet by 2030. Discover our impact, progress, and global footprint.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1200&h=630&fit=crop">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://giga.global/">
+    <meta property="twitter:title" content="GIGA - Connecting The Dots: Giga's Impact In 2023">
+    <meta property="twitter:description" content="GIGA is a UNICEF-ITU initiative to connect every school to the Internet by 2030.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1200&h=630&fit=crop">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles-new.css">
+      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+    body, html {
+      margin: 0; padding: 0;
+      width: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fff;
+    }
+
+    /* Lockscreen wrapper */
+    #lockscreen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      overflow: hidden;
+      transition: opacity 0.6s ease;
+    }
+
+    /* Wallpaper (draggable) */
+    #wallpaper {
+      position: absolute;
+      inset: 0;
+      background: url('image111.png') center/cover no-repeat; /* 👈 replace */
+      transform: translateY(0);
+      filter: blur(0px);
+      opacity: 1;
+      transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
+    }
+
+    /* Unlock state */
+    #lockscreen.unlocked {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Dashboard (your main site) */
+    #dashboard {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      overflow: auto;
+      padding: 20px;
+    }
+  </style>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "GIGA",
+        "description": "A UNICEF-ITU initiative to connect every school to the Internet by 2030",
+        "url": "https://giga.global",
+        "logo": "https://giga.global/logo.png",
+        "sameAs": [
+            "https://twitter.com/giga_global",
+            "https://www.linkedin.com/company/gigaglobal",
+            "https://www.youtube.com/channel/UCQKZJwpYjJQqjqjqjqjqjqjq"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "info@giga.global",
+            "contactType": "General Inquiries"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="lockscreen">
+       <div id="wallpaper"></div>
+    </div>
+
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    
+    <!-- Header -->
+    <header class="site-header " role="banner">
+        <div class="header-container">
+            <div class="header-brand">
+                <a href="#" class="logo-link" aria-label="GIGA Home">
+                    <img src="image2.png" alt="GIGA - Connecting Every School" class="logo">
+                </a>
+            </div>
+            
+            <nav class="header-nav" role="navigation" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#our-work" class="nav-link">Our Work</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#our-centre" class="nav-link">Our Centre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#where-we-work" class="nav-link">Where We Work</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#press-resources" class="nav-link">Press & Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#get-involved" class="nav-link cta-link">Get Involved</a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile menu toggle -->
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+        
+        <!-- Mobile navigation -->
+        <nav class="mobile-nav" role="navigation" aria-label="Mobile navigation" aria-hidden="true">
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                    <a href="#about" class="mobile-nav-link">About</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#our-work" class="mobile-nav-link">Our Work</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#our-centre" class="mobile-nav-link">Our Centre</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#where-we-work" class="mobile-nav-link">Where We Work</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#press-resources" class="mobile-nav-link">Press & Resources</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#get-involved" class="mobile-nav-link">Get Involved</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+        
+        <!-- Hero Section -->
+        <section class="hero-section autoBlur" id="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Connecting The Dots: Giga's Impact In 2023</h1>
+                        <div class="hero-description">
+                            <p>One out of three people don't have access to the Internet – including more than 1.3 billion children who have no access at home. An estimated half of the world's schools lack meaningful connectivity. Without access to the Internet, children miss the chance to learn and flourish in an increasingly digital world.</p>
+                            <p>Giga is a partnership between the United Nations Children's Fund (UNICEF) and the International Telecommunication Union (ITU), working to connect every school in the world to the Internet and every young person to information, opportunity and choice.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-video" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <div class="video-container">
+                            <iframe 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="Our Impact In 2023 | Giga - Connecting every school in the world to the Internet"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="video-caption">
+                            <p>Watch Later</p>
+                            <p>Share</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Our Impact Section -->
+        <section class="impact-section " id="our-impact" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+            <div class="section-container autoBlur">
+                <div class="section-header ">
+                    <h2 class="section-title ">Our Impact</h2>
+                    <p class="section-subtitle">Our open-source connectivity solutions and innovative technologies have helped countries, transformed communities, and changed lives.</p>
+                </div>
+                
+                <div class="impact-stories" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                    <article class="impact-story">
+                        <div class="story-image">
+                            <img src="image4.png" alt="Students learning with technology" loading="lazy">
+                        </div>
+                        <div class="story-content">
+                            <blockquote class="story-quote">
+                                "The internet has helped us learn many things including how to use computers and tablets. We can now access information about anything we want to know even when we are not in school and that is where we can get more information."
+                            </blockquote>
+                            <cite class="story-attribution">Student from connected school</cite>
+                        </div>
+                    </article>
+                    
+                    <article class="impact-story" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <div class="story-image">
+                            <img src="image7.png" alt="Teacher in classroom" loading="lazy">
+                        </div>
+                        <div class="story-content">
+                            <blockquote class="story-quote">
+                                "The internet has changed the way we teach. We're going to be able to teach our students better. We're going to be able to access more information. Honestly, it is fun. Thank it opens our pupils' minds."
+                            </blockquote>
+                            <cite class="story-attribution">Teacher from connected school</cite>
+                        </div>
+                    </article>
+                    
+                    <article class="impact-story" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <div class="story-image">
+                            <img src="image6.png" alt="School administrator" loading="lazy">
+                        </div>
+                        <div class="story-content">
+                            <blockquote class="story-quote">
+                                "Life before the internet was really chaotic. It was really bad. Now everything has changed and we can access information easily. We can work at the click of a button. I don't have to walk up to the people to get information."
+                            </blockquote>
+                            <cite class="story-attribution">School administrator</cite>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Our Progress Section -->
+        <section class="progress-section autoBlur" id="our-progress" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Progress</h2>
+                    <p class="section-subtitle">Since our establishment in 2019, we have reached the following milestones:</p>
+                </div>
+                
+                <div class="progress-stats" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                    <div class="stat-item">
+                        <div class="stat-number">2.1M</div>
+                        <h3 class="stat-title">Schools Mapped</h3>
+                        <p class="stat-description">Connecting schools begins with knowing where they are. We have successfully mapped the location of 2.1 million schools across 136 countries.</p>
+                    </div>
+                    
+                    <div class="stat-item" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <div class="stat-number">90K</div>
+                        <h3 class="stat-title">Schools Reporting Real-Time Connectivity</h3>
+                        <p class="stat-description">In 2023, 90,000 schools across 22 countries reported real-time connectivity.</p>
+                    </div>
+                    
+                    <div class="stat-item" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <div class="stat-number">6</div>
+                        <h3 class="stat-title">Countries Supported With Infrastructure Mapping & Analysis</h3>
+                        <p class="stat-description">Giga has been conducting infrastructure mapping and analysis in Benin, Botswana, Brazil, Rwanda, Zimbabwe and Namibia.</p>
+                    </div>
+                    
+                    <div class="stat-item" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <div class="stat-number">13.4K</div>
+                        <h3 class="stat-title">Schools With Increased Access To Connectivity</h3>
+                        <p class="stat-description">Giga and its partners have supported increased access to connectivity for 13.4k schools in 26 countries.</p>
+                    </div>
+                    
+                    <div class="stat-item" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <div class="stat-number">6.74M</div>
+                        <h3 class="stat-title">Students With Increased Access To Connectivity</h3>
+                        <p class="stat-description">More than 6.74 million students have benefited from Giga's connectivity initiatives, thanks to Giga's technical support and open-source connectivity solutions.</p>
+                    </div>
+                    
+                    <div class="stat-item" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <div class="stat-number">34</div>
+                        <h3 class="stat-title">Countries Provided With Advanced Connectivity Support</h3>
+                        <p class="stat-description">Giga has provided advanced connectivity support to 34 countries, including financing and contracting in 8 countries and technical assistance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Global Footprint Section -->
+        <section class="footprint-section" id="global-footprint" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Global Footprint</h2>
+                    <p class="section-subtitle">Giga's global footprint now reaches more than 50 countries, including 34 countries provided with advanced connectivity support.</p>
+                </div>
+                
+                <div class="footprint-content" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                    <div class="footprint-map">
+                        <div class="map-container">
+                            <img src="image1.png" alt="World map showing GIGA's global presence" loading="lazy">
+                            <div class="map-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color active"></span>
+                                    <span class="legend-text">Countries where Giga is active</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color mapping"></span>
+                                    <span class="legend-text">Countries with school mapping support</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color interest"></span>
+                                    <span class="legend-text">Countries with early interest</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="country-stories" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <article class="country-story" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                            <div class="story-image">
+                                <img src="image8.png" alt="Brazil school connectivity" loading="lazy">
+                            </div>
+                            <div class="story-content">
+                                <h3 class="story-title">Brazil</h3>
+                                <p class="story-description">Giga supported the Government of Brazil's Office of the Comptroller General (CGU) to connect 500 schools across the country, benefiting more than 387,000 students and teachers with maximum speeds of 100 Mbps.</p>
+                            </div>
+                        </article>
+                        
+                        <article class="country-story" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                            <div class="story-image">
+                                <img src="image10.png" alt="Botswana school connectivity" loading="lazy">
+                            </div>
+                            <div class="story-content">
+                                <h3 class="story-title">Botswana</h3>
+                                <p class="story-description">Giga supported the Government's SmartBots initiative to connect 567 schools, benefiting more than 387,000 students and teachers with maximum speeds of 100 Mbps.</p>
+                            </div>
+                        </article>
+                        
+                        <article class="country-story" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                            <div class="story-image">
+                                <img src="image5.png" alt="Kazakhstan school connectivity" loading="lazy">
+                            </div>
+                            <div class="story-content">
+                                <h3 class="story-title">Kazakhstan</h3>
+                                <p class="story-description">Giga supported a feasibility study and proposed technical solutions to enhance connectivity speeds in schools, placing the upgrades to 10 schools, benefiting 3,000 students.</p>
+                            </div>
+                        </article>
+                        
+                        <article class="country-story" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                            <div class="story-image">
+                                <img src="image12.png" alt="Sierra Leone school connectivity" loading="lazy">
+                            </div>
+                            <div class="story-content">
+                                <h3 class="story-title">Sierra Leone</h3>
+                                <p class="story-description">Giga and the Government worked together to connect 74 hard-to-reach schools, bringing Internet access to 35,000 students and teachers in the most remote parts of the country.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Giga Voices Section -->
+        <section class="voices-section" id="giga-voices" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Giga Voices</h2>
+                    <p class="section-subtitle">Perspectives from our 2023 year-end event</p>
+                </div>
+                
+                <div class="voices-grid" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                    <article class="voice-item">
+                        <div class="voice-video">
+                            <iframe 
+                                src="https://www.youtube.com/watch?v=h7OHf9_rdps&pp=ygULZ2lnYSBhZnJpY2E%3D" 
+                                title="Giga Voices | Zohra Yermeche"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="voice-content" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                            <h3 class="voice-name">Zohra Yermeche</h3>
+                            <p class="voice-title">Partnership and Ecosystem Development</p>
+                            <blockquote class="voice-quote">"With UNICEF and ITU as strong drivers, Giga provided an ideal framework for multi-stakeholder cross-sectoral collaboration to achieve our shared goal."</blockquote>
+                        </div>
+                    </article>
+                    
+                    <article class="voice-item" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <div class="voice-video">
+                            <iframe 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="Giga Voices | Carolina Desmeules"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="voice-content" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                            <h3 class="voice-name">Carolina Desmeules</h3>
+                            <p class="voice-title">VP of Communications and Sustainability, IHS</p>
+                            <blockquote class="voice-quote">"Our effort is rooted in the belief that better connections lead to better opportunities and we cannot overlook emerged with Giga on how we could facilitate internet access."</blockquote>
+                        </div>
+                    </article>
+                    
+                    <article class="voice-item" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <div class="voice-video">
+                            <iframe 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="Giga Voices | Tunde Majekodunmi"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="voice-content" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                            <h3 class="voice-name">Tunde Majekodunmi</h3>
+                            <p class="voice-title">Tax Manager, Sahara Technologies</p>
+                            <blockquote class="voice-quote">"When Giga came into the picture, our mission statement was to help young people learn and grow. Our commitment to achieving this through technology."</blockquote>
+                        </div>
+                    </article>
+                    
+                    <article class="voice-item" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <div class="voice-video">
+                            <iframe 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="Giga Voices | Javier Soria"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="voice-content" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                            <h3 class="voice-name">Javier Soria</h3>
+                            <p class="voice-title">Connectivity Perspective Mission of Spain to the UN</p>
+                            <blockquote class="voice-quote">"Spain is committed to achieving the goals and Spain's objectives to reduce the digital divide between. This is why Spain is and a contributor to the achievement of the Sustainable Development Goals."</blockquote>
+                        </div>
+                    </article>
+                    
+                    <article class="voice-item" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <div class="voice-video">
+                            <iframe 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="Giga Voices | Edin Forto"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="voice-content" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                            <h3 class="voice-name">Edin Forto</h3>
+                            <p class="voice-title">HE Ambassador of Bosnia and Herzegovina to the UN</p>
+                            <blockquote class="voice-quote">"We are very pleased to be part of this demonstrated spirit, with 14 ministries of education. We know that we have a responsibility to our children, and Giga seems to be the one."</blockquote>
+                        </div>
+                    </article>
+                    
+                    <article class="voice-item" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <div class="voice-video">
+                            <iframe 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="Giga Voices | Veronika Vashchenko"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="voice-content" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                            <h3 class="voice-name">Veronika Vashchenko</h3>
+                            <p class="voice-title">Digital Divide Advocate</p>
+                            <blockquote class="voice-quote">"Managing the digital divide was crucial to advocate to governments to increase their investment in school connectivity and to ensure that no child is left behind in the most remote parts of the country."</blockquote>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Partners Section -->
+        <section class="partners-section" id="partners" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Special thanks to our partners</h2>
+                </div>
+                
+                <div class="partners-content" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                    <div class="partner-category">
+                        <h3 class="category-title">Government Sponsors and Donors</h3>
+                        <div class="partner-logos">
+                            <img src="image13.png" alt="Government of Switzerland" loading="lazy">
+                            <img src="image14.png" alt="Government of Spain" loading="lazy">
+                            <img src="image15.png" alt="Generalitat de Catalunya" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop" alt="Barcelona City Council" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop" alt="Republic of Latvia" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <div class="partner-category" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <h3 class="category-title">Corporate Partners</h3>
+                        <div class="partner-logos">
+                            <img src="image13.png" alt="Ericsson" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop" alt="IHS" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop" alt="Dell Technologies" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop" alt="Misk Foundation" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop" alt="Jubail Island" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop" alt="nic.br" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop" alt="Liquid Intelligent Technologies" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop" alt="GSMA" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop" alt="ARM" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop" alt="Actual" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop" alt="Meta" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop" alt="BCG" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop" alt="SoftBank" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <div class="partner-category" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                        <h3 class="category-title">In-Country Partners</h3>
+                        <div class="partner-text">
+                            <div class="partner-column">
+                                <h4>Africa</h4>
+                                <p>Angola: Ministry of Education, Ministry of Telecommunications and Information Technologies</p>
+                                <p>Benin: Ministry of Digital Economy and Communication, Ministry of Primary and Secondary Education</p>
+                                <p>Botswana: Ministry of Education and Skills Development, Botswana Telecommunications Corporation</p>
+                                <p>Burkina Faso: Ministry of National Education, Literacy and National Languages</p>
+                                <p>Cameroon: Ministry of Posts and Telecommunications, Ministry of Basic Education</p>
+                                <p>Chad: Ministry of Posts and New Information and Communication Technologies</p>
+                                <p>Democratic Republic of Congo: Ministry of Primary, Secondary and Technical Education</p>
+                                <p>Egypt: Ministry of Communications and Information Technology, Ministry of Education</p>
+                                <p>Ethiopia: Ministry of Education, Ethio Telecom</p>
+                                <p>Ghana: Ministry of Education, Ministry of Communications and Digitalisation</p>
+                                <p>Kenya: Ministry of Education, Ministry of Information, Communications and Technology</p>
+                                <p>Liberia: Ministry of Education, Liberia Telecommunications Authority</p>
+                                <p>Madagascar: Ministry of National Education, Ministry of Digital Transformation</p>
+                                <p>Malawi: Ministry of Education, Malawi Communications Regulatory Authority</p>
+                                <p>Mali: Ministry of National Education, Ministry of Digital Economy</p>
+                                <p>Morocco: Ministry of National Education, Preschool and Sports</p>
+                                <p>Mozambique: Ministry of Education and Human Development</p>
+                                <p>Namibia: Ministry of Education, Arts and Culture</p>
+                                <p>Niger: Ministry of National Education, Ministry of Posts and New Technologies</p>
+                                <p>Nigeria: Federal Ministry of Education, Nigerian Communications Commission</p>
+                                <p>Rwanda: Ministry of Education, Rwanda Utilities Regulatory Authority</p>
+                                <p>Senegal: Ministry of National Education, Ministry of Digital Economy</p>
+                                <p>Sierra Leone: Ministry of Basic and Senior Secondary Education</p>
+                                <p>Somalia: Ministry of Education, Culture and Higher Education</p>
+                                <p>South Sudan: Ministry of General Education and Instruction</p>
+                                <p>Sudan: Ministry of Education, National Telecommunications Corporation</p>
+                                <p>Tanzania: Ministry of Education, Science and Technology</p>
+                                <p>Togo: Ministry of Primary and Secondary Education</p>
+                                <p>Uganda: Ministry of Education and Sports, Uganda Communications Commission</p>
+                                <p>Zambia: Ministry of Education, Zambia Information and Communications Technology Authority</p>
+                                <p>Zimbabwe: Ministry of Primary and Secondary Education</p>
+                            </div>
+                            
+                            <div class="partner-column" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                                <h4>Americas</h4>
+                                <p>Brazil: Ministry of Education, Brazilian Internet Steering Committee</p>
+                                <p>Colombia: Ministry of National Education, Ministry of Information and Communications Technologies</p>
+                                <p>Dominican Republic: Ministry of Education, Dominican Institute of Telecommunications</p>
+                                <p>Ecuador: Ministry of Education, Ministry of Telecommunications</p>
+                                <p>El Salvador: Ministry of Education, Science and Technology</p>
+                                <p>Guatemala: Ministry of Education, Superintendency of Telecommunications</p>
+                                <p>Honduras: Ministry of Education, National Commission of Telecommunications</p>
+                                <p>Paraguay: Ministry of Education and Sciences</p>
+                            </div>
+                            
+                            <div class="partner-column" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                                <h4>Asia-Pacific</h4>
+                                <p>Bangladesh: Ministry of Education, Bangladesh Telecommunication Regulatory Commission</p>
+                                <p>Cambodia: Ministry of Education, Youth and Sport</p>
+                                <p>Kazakhstan: Ministry of Education and Science</p>
+                                <p>Kyrgyzstan: Ministry of Education and Science</p>
+                                <p>Mongolia: Ministry of Education and Science</p>
+                                <p>Myanmar: Ministry of Education, Posts and Telecommunications Department</p>
+                                <p>Nepal: Ministry of Education, Science and Technology</p>
+                                <p>Pakistan: Ministry of Federal Education and Professional Training</p>
+                                <p>Papua New Guinea: Department of Education</p>
+                                <p>Philippines: Department of Education, Department of Information and Communications Technology</p>
+                                <p>Sri Lanka: Ministry of Education, Telecommunications Regulatory Commission</p>
+                                <p>Tajikistan: Ministry of Education and Science</p>
+                                <p>Uzbekistan: Ministry of Preschool and School Education</p>
+                                <p>Vanuatu: Ministry of Education and Training</p>
+                            </div>
+                            
+                            <div class="partner-column" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+                                <h4>Europe & Middle East</h4>
+                                <p>Iraq: Ministry of Education, Communications and Media Commission</p>
+                                <p>Jordan: Ministry of Education, Telecommunications Regulatory Commission</p>
+                                <p>Kosovo: Ministry of Education, Science, Technology and Innovation</p>
+                                <p>Lebanon: Ministry of Education and Higher Education</p>
+                                <p>Moldova: Ministry of Education and Research</p>
+                                <p>North Macedonia: Ministry of Education and Science</p>
+                                <p>Ukraine: Ministry of Education and Science</p>
+                                <p>Yemen: Ministry of Education, Ministry of Telecommunications</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">About GIGA</h3>
+                    <p class="footer-description">GIGA is a global initiative by UNICEF and ITU to connect every school to the Internet by 2030, ensuring no child is left behind in our digital world.</p>
+                    <div class="footer-social">
+                        <a href="https://twitter.com/giga_global" class="social-link" aria-label="Follow GIGA on Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/gigaglobal" class="social-link" aria-label="Follow GIGA on LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCQKZJwpYjJQqjqjqjqjqjqjq" class="social-link" aria-label="Subscribe to GIGA on YouTube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#our-work">Our Work</a></li>
+                        <li><a href="#our-centre">Our Centre</a></li>
+                        <li><a href="#where-we-work">Where We Work</a></li>
+                        <li><a href="#press-resources">Press & Resources</a></li>
+                        <li><a href="#get-involved">Get Involved</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact</h3>
+                    <div class="contact-info">
+                        <p>Email: <a href="mailto:info@giga.global">info@giga.global</a></p>
+                        <p>Partnership inquiries: <a href="mailto:giga.partnerships@unicef.org">giga.partnerships@unicef.org</a></p>
+                        <p>Geneva, Switzerland</p>
+                        <p>Barcelona, Spain</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p>&copy; 2023 GIGA. A joint initiative by UNICEF and ITU. All rights reserved.</p>
+                    <div class="legal-links">
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms of Use</a>
+                        <a href="#accessibility">Accessibility</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+// ==========================
+// Scroll-triggered Animations + Counter
+// ==========================
+class ScrollAnimations {
+  constructor() {
+    this.animatedElements = document.querySelectorAll(
+      '.stat-item, .impact-story, .country-story, .voice-item'
+    );
+    this.init();
+  }
+
+  init() {
+    if ('IntersectionObserver' in window) {
+      this.setupIntersectionObserver();
+    }
+  }
+
+  setupIntersectionObserver() {
+    const options = {
+      root: null,
+      rootMargin: '-10%',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+
+          // ✅ If this element has a .stat-number, animate it
+          const numberEl = entry.target.querySelector('.stat-number');
+          if (numberEl) {
+            this.animateCounter(numberEl);
+          }
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    this.animatedElements.forEach(element => {
+      element.classList.add('animate-ready');
+      observer.observe(element);
+    });
+  }
+
+  // Count-up number animation
+  animateCounter(el) {
+    let targetText = el.textContent.trim();
+    let target = this.parseNumber(targetText);
+    let duration = 2000; // ms
+    let start = 0;
+    let startTime = null;
+
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      let progress = Math.min((timestamp - startTime) / duration, 1);
+      let value = Math.floor(progress * target);
+
+      el.textContent = this.formatNumber(value, targetText);
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = targetText; // restore final formatted text
+      }
+    };
+
+    requestAnimationFrame(step);
+  }
+
+  // Parse numbers like "2.1M", "90K", "13.4K"
+  parseNumber(str) {
+    str = str.toUpperCase();
+    if (str.includes("M")) {
+      return parseFloat(str) * 1_000_000;
+    } else if (str.includes("K")) {
+      return parseFloat(str) * 1_000;
+    } else {
+      return parseFloat(str.replace(/,/g, ""));
+    }
+  }
+
+  // Format numbers with suffix (K/M) if originally had them
+  formatNumber(num, original) {
+    if (original.includes("M")) {
+      return (num / 1_000_000).toFixed(1) + "M";
+    } else if (original.includes("K")) {
+      return (num / 1_000).toFixed(1) + "K";
+    } else {
+      return num.toLocaleString();
+    }
+  }
+}
+
+// ==========================
+// Lockscreen Unlock Handling
+// ==========================
+const lockscreen = document.getElementById("lockscreen");
+const wallpaper = document.getElementById("wallpaper");
+
+let isDragging = false;
+let startY = 0;
+
+// Start dragging
+wallpaper.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  startY = e.clientY;
+  wallpaper.style.transition = "none";
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  let dragDistance = startY - e.clientY;
+
+  if (dragDistance > 0) {
+    wallpaper.style.transform = `translateY(${-dragDistance}px)`;
+    let blurAmount = Math.min(dragDistance / 25, 20);
+    wallpaper.style.filter = `blur(${blurAmount}px)`;
+    let opacity = Math.max(1 - dragDistance / 400, 0.2);
+    wallpaper.style.opacity = opacity;
+  }
+});
+
+document.addEventListener("mouseup", (e) => {
+  if (!isDragging) return;
+  isDragging = false;
+
+  let dragDistance = startY - e.clientY;
+
+  if (dragDistance > 200) {
+    // Unlock
+    lockscreen.classList.add("unlocked");
+    document.body.classList.remove("locked"); // ✅ allow scroll
+
+    // Reset items so they can animate again
+    document.querySelectorAll('.stat-item, .impact-story, .country-story, .voice-item')
+      .forEach(el => {
+        el.classList.remove('animate-in');
+        el.classList.remove('animate-ready');
+      });
+
+    // Re-run scroll-triggered animations after lockscreen transition
+    setTimeout(() => {
+      new ScrollAnimations();
+    }, 500);
+
+  } else {
+    // Snap back if not enough drag
+    wallpaper.style.transition = "transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease";
+    wallpaper.style.transform = "translateY(0)";
+    wallpaper.style.filter = "blur(0px)";
+    wallpaper.style.opacity = "1";
+  }
+});
+
+// ==========================
+// Run once on page load
+// ==========================
+new ScrollAnimations();
+</script>
+
+    
+    <!-- Scripts -->
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.52/build/spline-viewer.js"></script>
+
+</body>
+</html>
+
