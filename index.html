@@ -838,24 +838,26 @@ const wallpaper = document.getElementById("wallpaper");
 
 let isDragging = false;
 let startY = 0;
+let isTouch = false;
 
-// Helpers to unify mouse & touch events
+// Helpers
 function getY(e) {
   return e.touches ? e.touches[0].clientY : e.clientY;
 }
 
-// Start drag
-function startDrag(e) {
+// ==========================
+// Desktop Mouse: Full drag
+// ==========================
+function startDragMouse(e) {
   isDragging = true;
-  startY = getY(e);
+  isTouch = false;
+  startY = e.clientY;
   wallpaper.style.transition = "none";
 }
 
-// Move drag
-function moveDrag(e) {
-  if (!isDragging) return;
-  const currentY = getY(e);
-  let dragDistance = startY - currentY;
+function moveDragMouse(e) {
+  if (!isDragging || isTouch) return;
+  let dragDistance = startY - e.clientY;
 
   if (dragDistance > 0) {
     wallpaper.style.transform = `translateY(${-dragDistance}px)`;
@@ -866,32 +868,15 @@ function moveDrag(e) {
   }
 }
 
-// End drag
-function endDrag(e) {
-  if (!isDragging) return;
+function endDragMouse(e) {
+  if (!isDragging || isTouch) return;
   isDragging = false;
 
-  const endY = getY(e);
-  let dragDistance = startY - endY;
+  let dragDistance = startY - e.clientY;
 
   if (dragDistance > 200) {
-    // ✅ Unlock
-    lockscreen.classList.add("unlocked");
-    document.body.classList.remove("locked");
-
-    // Reset animations
-    document.querySelectorAll(
-      ".stat-item, .impact-story, .country-story, .voice-item"
-    ).forEach((el) => {
-      el.classList.remove("animate-in");
-      el.classList.remove("animate-ready");
-    });
-
-    setTimeout(() => {
-      new ScrollAnimations();
-    }, 500);
+    unlockScreen();
   } else {
-    // Snap back
     wallpaper.style.transition =
       "transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease";
     wallpaper.style.transform = "translateY(0)";
@@ -901,15 +886,79 @@ function endDrag(e) {
 }
 
 // ==========================
-// Bind events (mouse + touch)
+// Mobile Touch: Smooth fade
 // ==========================
-wallpaper.addEventListener("mousedown", startDrag);
-document.addEventListener("mousemove", moveDrag);
-document.addEventListener("mouseup", endDrag);
+function startDragTouch(e) {
+  isDragging = true;
+  isTouch = true;
+  startY = getY(e);
+  wallpaper.style.transition = "none";
+}
 
-wallpaper.addEventListener("touchstart", startDrag, { passive: true });
-document.addEventListener("touchmove", moveDrag, { passive: true });
-document.addEventListener("touchend", endDrag);
+function moveDragTouch(e) {
+  if (!isDragging || !isTouch) return;
+  const currentY = getY(e);
+  let dragDistance = startY - currentY;
+
+  if (dragDistance > 0) {
+    let progress = Math.min(dragDistance / 120, 1); // shorter drag threshold
+    wallpaper.style.opacity = String(1 - progress);
+    wallpaper.style.transform = `translateY(${-progress * 50}px)`; // small upward ease
+  }
+}
+
+function endDragTouch(e) {
+  if (!isDragging || !isTouch) return;
+  isDragging = false;
+
+  const endY = getY(e);
+  let dragDistance = startY - endY;
+
+  if (dragDistance > 80) {
+    // small swipe is enough
+    wallpaper.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+    wallpaper.style.opacity = "0";
+    wallpaper.style.transform = "translateY(-80px)";
+    setTimeout(() => unlockScreen(), 400);
+  } else {
+    // snap back
+    wallpaper.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+    wallpaper.style.opacity = "1";
+    wallpaper.style.transform = "translateY(0)";
+  }
+}
+
+// ==========================
+// Unlock Helper
+// ==========================
+function unlockScreen() {
+  lockscreen.classList.add("unlocked");
+  document.body.classList.remove("locked");
+
+  document.querySelectorAll(
+    ".stat-item, .impact-story, .country-story, .voice-item"
+  ).forEach((el) => {
+    el.classList.remove("animate-in");
+    el.classList.remove("animate-ready");
+  });
+
+  setTimeout(() => {
+    new ScrollAnimations();
+  }, 500);
+}
+
+// ==========================
+// Bind Events
+// ==========================
+// Mouse
+wallpaper.addEventListener("mousedown", startDragMouse);
+document.addEventListener("mousemove", moveDragMouse);
+document.addEventListener("mouseup", endDragMouse);
+
+// Touch
+wallpaper.addEventListener("touchstart", startDragTouch, { passive: true });
+document.addEventListener("touchmove", moveDragTouch, { passive: true });
+document.addEventListener("touchend", endDragTouch);
 
 // ==========================
 // Run on page load
@@ -917,11 +966,6 @@ document.addEventListener("touchend", endDrag);
 new ScrollAnimations();
 </script>
 
-
-    
-    <!-- Scripts -->
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
   </script>
