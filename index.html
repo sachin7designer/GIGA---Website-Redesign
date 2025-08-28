@@ -738,9 +738,10 @@
             </div>
         </div>
     </footer>
-    <script>
+
+<script>
 // ==========================
-// Scroll-triggered Animations + Counter
+// Scroll Animations
 // ==========================
 class ScrollAnimations {
   constructor() {
@@ -751,7 +752,7 @@ class ScrollAnimations {
   }
 
   init() {
-    if ('IntersectionObserver' in window) {
+    if ("IntersectionObserver" in window) {
       this.setupIntersectionObserver();
     }
   }
@@ -759,17 +760,16 @@ class ScrollAnimations {
   setupIntersectionObserver() {
     const options = {
       root: null,
-      rootMargin: '-10%',
-      threshold: 0.1
+      rootMargin: "-10%",
+      threshold: 0.1,
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
+          entry.target.classList.add("animate-in");
 
-          // ✅ If this element has a .stat-number, animate it
-          const numberEl = entry.target.querySelector('.stat-number');
+          const numberEl = entry.target.querySelector(".stat-number");
           if (numberEl) {
             this.animateCounter(numberEl);
           }
@@ -779,18 +779,16 @@ class ScrollAnimations {
       });
     }, options);
 
-    this.animatedElements.forEach(element => {
-      element.classList.add('animate-ready');
+    this.animatedElements.forEach((element) => {
+      element.classList.add("animate-ready");
       observer.observe(element);
     });
   }
 
-  // Count-up number animation
   animateCounter(el) {
     let targetText = el.textContent.trim();
     let target = this.parseNumber(targetText);
-    let duration = 2000; // ms
-    let start = 0;
+    let duration = 2000;
     let startTime = null;
 
     const step = (timestamp) => {
@@ -803,14 +801,13 @@ class ScrollAnimations {
       if (progress < 1) {
         requestAnimationFrame(step);
       } else {
-        el.textContent = targetText; // restore final formatted text
+        el.textContent = targetText;
       }
     };
 
     requestAnimationFrame(step);
   }
 
-  // Parse numbers like "2.1M", "90K", "13.4K"
   parseNumber(str) {
     str = str.toUpperCase();
     if (str.includes("M")) {
@@ -822,7 +819,6 @@ class ScrollAnimations {
     }
   }
 
-  // Format numbers with suffix (K/M) if originally had them
   formatNumber(num, original) {
     if (original.includes("M")) {
       return (num / 1_000_000).toFixed(1) + "M";
@@ -843,16 +839,23 @@ const wallpaper = document.getElementById("wallpaper");
 let isDragging = false;
 let startY = 0;
 
-// Start dragging
-wallpaper.addEventListener("mousedown", (e) => {
-  isDragging = true;
-  startY = e.clientY;
-  wallpaper.style.transition = "none";
-});
+// Helpers to unify mouse & touch events
+function getY(e) {
+  return e.touches ? e.touches[0].clientY : e.clientY;
+}
 
-document.addEventListener("mousemove", (e) => {
+// Start drag
+function startDrag(e) {
+  isDragging = true;
+  startY = getY(e);
+  wallpaper.style.transition = "none";
+}
+
+// Move drag
+function moveDrag(e) {
   if (!isDragging) return;
-  let dragDistance = startY - e.clientY;
+  const currentY = getY(e);
+  let dragDistance = startY - currentY;
 
   if (dragDistance > 0) {
     wallpaper.style.transform = `translateY(${-dragDistance}px)`;
@@ -861,45 +864,59 @@ document.addEventListener("mousemove", (e) => {
     let opacity = Math.max(1 - dragDistance / 400, 0.2);
     wallpaper.style.opacity = opacity;
   }
-});
+}
 
-document.addEventListener("mouseup", (e) => {
+// End drag
+function endDrag(e) {
   if (!isDragging) return;
   isDragging = false;
 
-  let dragDistance = startY - e.clientY;
+  const endY = getY(e);
+  let dragDistance = startY - endY;
 
   if (dragDistance > 200) {
-    // Unlock
+    // ✅ Unlock
     lockscreen.classList.add("unlocked");
-    document.body.classList.remove("locked"); // ✅ allow scroll
+    document.body.classList.remove("locked");
 
-    // Reset items so they can animate again
-    document.querySelectorAll('.stat-item, .impact-story, .country-story, .voice-item')
-      .forEach(el => {
-        el.classList.remove('animate-in');
-        el.classList.remove('animate-ready');
-      });
+    // Reset animations
+    document.querySelectorAll(
+      ".stat-item, .impact-story, .country-story, .voice-item"
+    ).forEach((el) => {
+      el.classList.remove("animate-in");
+      el.classList.remove("animate-ready");
+    });
 
-    // Re-run scroll-triggered animations after lockscreen transition
     setTimeout(() => {
       new ScrollAnimations();
     }, 500);
-
   } else {
-    // Snap back if not enough drag
-    wallpaper.style.transition = "transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease";
+    // Snap back
+    wallpaper.style.transition =
+      "transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease";
     wallpaper.style.transform = "translateY(0)";
     wallpaper.style.filter = "blur(0px)";
     wallpaper.style.opacity = "1";
   }
-});
+}
 
 // ==========================
-// Run once on page load
+// Bind events (mouse + touch)
+// ==========================
+wallpaper.addEventListener("mousedown", startDrag);
+document.addEventListener("mousemove", moveDrag);
+document.addEventListener("mouseup", endDrag);
+
+wallpaper.addEventListener("touchstart", startDrag, { passive: true });
+document.addEventListener("touchmove", moveDrag, { passive: true });
+document.addEventListener("touchend", endDrag);
+
+// ==========================
+// Run on page load
 // ==========================
 new ScrollAnimations();
 </script>
+
 
     
     <!-- Scripts -->
